@@ -14,6 +14,21 @@ const crearVecino = (req, res) => {
         return res.status(201).send(Vecino)
     })
 }
+
+const updateVecino = (req, res) => {
+    const {id} = req.params;
+    Vecino.findByIdAndUpdate(id,req.body, (err, vecinos) => {
+        if(err){
+            return res.status(400).send({message: "Error al obtener al vecino"})
+        }
+        if(!vecinos){
+            return res.status(404).send({message: "Vecino no encontrado"})
+        }
+        return res.status(200).send(vecinos)
+    })
+}
+
 module.exports={
-    crearVecino
+    crearVecino,
+    updateVecino,
 }
