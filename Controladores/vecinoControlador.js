@@ -27,8 +27,17 @@ const updateVecino = (req, res) => {
         return res.status(200).send(vecinos)
     })
 }
+const getVecinos = (req, res) => {
+    Vecino.find({}, (err, vecinos) => {
+        if(err){
+            return res.status(400).send({message: "ERROR: no se pudieron obtener los vecinos"})
+        }
+        return res.status(200).send(vecinos)
+    })
+}
 
 module.exports={
     crearVecino,
     updateVecino,
+    getVecino
 }
