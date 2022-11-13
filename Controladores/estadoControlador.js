@@ -1,5 +1,4 @@
 const estado = require('../Modelos/estado');
-const Estado = require('../Modelos/estado');
 const crearEstado = (req, res) => {
     const {descripcion} = req.body;
     const nuevoEstado = new Estado({
@@ -14,12 +13,14 @@ const crearEstado = (req, res) => {
     })
 }
 const getEstados = (req, res)=> {
-    Estado.find({},(err, estado) => {
+    Estado.find({},(err, estados) => {
         if(err){
             return res.status(400).send ({message: "Error al obtener estados"})
         }
+        return res.status(200).send(estados)
     })
 }
+
 
 module.exports={
     crearEstado,

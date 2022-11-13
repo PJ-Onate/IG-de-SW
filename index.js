@@ -5,10 +5,14 @@ require ('dotenv').config();
 
 const app = express();
 const estadoRutas = require('./Rutas/estadoRutas');
+const vecinoRutas = require('./Rutas/vecinoRutas');
 
 app.use(cors())
 app.use(express.json);
-app.options('*', estadoRutas);
+app.options('*', cors());
+app.use('/api',estadoRutas);
+app.use('/api',vecinoRutas);
+
 
 app.listen(process.env.PORT, () => {
         console.log ('El proyecto está corriendo en el puerto ->', process.env.PORT)
