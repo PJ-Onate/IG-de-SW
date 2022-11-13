@@ -4,8 +4,7 @@ const EstadoSchema = new Schema({
     descripcion:{
         type: String,
         required: true
-    },
-
+    }
 });
 
-module.exports = mongoose.model('Estado', EstadoSchema);
+module.exports=mongoose.model('estadoModelo', EstadoSchema);

@@ -1,0 +1,43 @@
+const estadoModelo = require('../Modelos/estados');
+const crearEstado = (req, res) => {
+    const {descripcion} = req.body;
+    const nuevoEstado = new estadoModeol({
+        descripcion
+    });
+
+nuevoEstado.save((err, estadoModelo) => {
+    if(err){
+        return res.status(400).send({
+            message: "ERROR: no se puede crear estado"})
+    }
+    return res.status(201).send(estadoModelo)
+});
+}
+
+const getEstado = (req, res) => {
+    estadoModelo.find({}, (err, modelos) => {
+        if(err){
+            return res.status(400).send({message: "ERROR: no se pudieron obtener los vecinos"})
+        }
+        return res.status(200).send(modelos)
+    })
+}
+
+const updateEstado = (req, res) => {
+    const {id} = req.params;
+    estadoModelo.findByIdAndUpdate(id,req.body, (err, estados) => {
+        if(err){
+            return res.status(400).send({message: "Error al obtener el estado"})
+        }
+        if(!estados){
+            return res.status(404).send({message: "Vecino no encontrado"})
+        }
+        return res.status(200).send(estados)
+    })
+}
+
+module.exports={
+    crearEstado,
+    updateEstado,
+    getEstado
+}
