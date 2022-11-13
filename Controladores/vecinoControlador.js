@@ -52,6 +52,6 @@ const deleteVecino = (req, res) => {
 module.exports={
     crearVecino,
     updateVecino,
-    getVecino,
+    getVecinos,
     deleteVecino
 }
