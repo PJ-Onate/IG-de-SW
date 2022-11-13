@@ -17,6 +17,7 @@ app.use('/api',vecinoRutas);
 app.listen(process.env.PORT, () => {
     console.log('El servidor esta corriendo en el puerto -> ',process.env.PORT);
     });
+    
     mongoose.set('useFindAndModify', false);
     mongoose.set('useNewUrlParser', true);
     mongoose.set('useCreateIndex', true);
