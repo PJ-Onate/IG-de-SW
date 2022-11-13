@@ -36,8 +36,22 @@ const getVecinos = (req, res) => {
     })
 }
 
+const deleteVecino = (req, res) => {
+    const {id} = req.params;
+    Vecino.findByIdAndDelete(id, (err, vecinos) => {
+        if(err){
+            return res.status(400).send({message: "Error al obtener al vecino"})
+        }
+        if(!vecinos){
+            return res.status(404).send({message: "Vecino no encontrado"})
+        }
+        return res.status(200).send(vecinos)
+    })
+}
+
 module.exports={
     crearVecino,
     updateVecino,
-    getVecino
+    getVecino,
+    deleteVecino
 }
