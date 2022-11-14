@@ -1,6 +1,6 @@
 const express = require('express');
 const api = express.Router();
-const vecinoControlador = require('../controladores/vecinoControlador');
+const vecinoControlador = require('../Controladores/vecinoControlador');
 
 api.post('/vecino', vecinoControlador.crearVecino);
 api.put('/vecino/update/:id', vecinoControlador.updateVecino);
