@@ -3,6 +3,4 @@ const api = express.Router();
 const estadosControlador = require('../Controladores/estadosControladores');
 
 api.post('/estadoModelo', estadosControlador.crearEstado);
-api.put('/estados/update/:id', estadosControlador.updateEstado);
-api.get('/estados', estadosControlador.getEstado);
 module.exports = api;

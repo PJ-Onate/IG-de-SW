@@ -16,7 +16,7 @@ const crearVecino = (req, res) => {
 }
 
 const updateVecino = (req, res) => {
-    const {id} = req.params;
+    const {id} = req.params
     Vecino.findByIdAndUpdate(id,req.body, (err, vecinos) => {
         if(err){
             return res.status(400).send({message: "Error al obtener al vecino"})
@@ -24,7 +24,7 @@ const updateVecino = (req, res) => {
         if(!vecinos){
             return res.status(404).send({message: "Vecino no encontrado"})
         }
-        return res.status(200).send(vecinos)
+        return res.status(201).send(vecinos)
     })
 }
 const getVecinos = (req, res) => {
@@ -49,9 +49,23 @@ const deleteVecino = (req, res) => {
     })
 }
 
+const getVecinoEspecifico = (req, res) =>{
+    const {id} = req.params
+    Vecino.findById(id, (err, vecinos) =>{
+        if(err){
+            return res.status(400).send({messsage: "ERROR al obtener al vecino"})
+        }
+        if(!vecinos){
+            return res.status(404).send({message: "ERROR: vecino no encontrado"})
+        }
+        return res.status(200).send(vecinos)
+    })
+}
+
 module.exports={
     crearVecino,
     updateVecino,
     getVecinos,
-    deleteVecino
+    deleteVecino,
+    getVecinoEspecifico
 }

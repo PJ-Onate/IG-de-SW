@@ -18,9 +18,10 @@ const vecinoSchema = new Schema({
         required: true
     },
    // estado:{
-   //     type: Schema.ObjectId,
-   //     ref: 'estado'
-   // }
+       //type: Schema.ObjectId,
+      // ref: 'estado'
+    //}
+   
 
 });
 
