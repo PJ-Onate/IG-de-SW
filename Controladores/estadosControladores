@@ -23,7 +23,21 @@ const getEstado = (req, res) => {
     })
 }
 
+const updateEstado = (req, res) => {
+    const {id} = req.params;
+    estadoModelo.findByIdAndUpdate(id,req.body, (err, estados) => {
+        if(err){
+            return res.status(400).send({message: "Error al obtener el estado"})
+        }
+        if(!estados){
+            return res.status(404).send({message: "Vecino no encontrado"})
+        }
+        return res.status(200).send(estados)
+    })
+}
+
 module.exports={
     crearEstado,
-    getEstado
+    getEstado,
+    updateEstado
 }
