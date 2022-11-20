@@ -4,18 +4,31 @@ const cors = require ('cors');
 require ('dotenv').config();
 
 const app = express();
+const estadoRutas = require('./Rutas/estadosRutas');
+const vecinoRutas = require('./Rutas/vecinoRutas');
+
+app.use(cors())
+app.use(express.json());
+app.options('*', cors());
+app.use('/api',estadoRutas);
+app.use('/api',vecinoRutas);
+
 
 app.listen(process.env.PORT, () => {
-        console.log ('El proyecto está corriendo en el puerto ->', process.env.PORT)
-});
+    console.log('El servidor esta corriendo en el puerto -> ',process.env.PORT);
+    });
 
-moongose.set('useFindandModify', false);
-moongose.set('useNewUrlParser', true)
-moongose.set('useCreateIndex', true)
-moongose.set('useUnifiedTopology', true)
+    mongoose.set('useFindAndModify', false);
+    mongoose.set('useNewUrlParser', true);
+    mongoose.set('useCreateIndex', true);
+    mongoose.set('useUnifiedTopology', true);
 
-moongose.connect(process.env.DB, (err) =>{
-    if (err){
-        return console.log ('Error al conectar a la base de datos ->', err)
-    }
-})
+    mongoose.connect('mongodb://Daniel:48402369@ac-azfkacu-shard-00-00.eutrwpu.mongodb.net:27017,ac-azfkacu-shard-00-01.eutrwpu.mongodb.net:27017,ac-azfkacu-shard-00-02.eutrwpu.mongodb.net:27017/?ssl=true&replicaSet=atlas-uavt7v-shard-0&authSource=admin&retryWrites=true&w=majority',
+                    (err) => {
+                        if(err){
+                            return console.log('Error al conectar la base de datos -> ', err)
+                        }
+                        return console.log('Conectado a la base de datos')
+                    });
+
+
