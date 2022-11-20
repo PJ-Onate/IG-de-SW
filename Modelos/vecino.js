@@ -1,28 +1,37 @@
 const mongoose = require('mongoose');
+
+
 const Schema = mongoose.Schema;
 const vecinoSchema = new Schema({
-    rut:{
-        type: String,
-        required: true
-    },
     nombre:{
         type: String,
-        required: true
+        require: true
     },
-    domicilio:{
+    apellido:{
         type: String,
-        required: true
+        require: true
     },
-    numDomicilio:{
+    rut: {
+        type: String,
+        unique: true
+    },
+    telefono:{
         type: Number,
-        required: true
+        require: true
     },
-   // estado:{
-       //type: Schema.ObjectId,
-      // ref: 'estado'
-    //}
-   
+    email: {
+        type: String,
+        unique: true
+    },
+    gastoComunes:{
+        type: Schema.ObjectId,
+        ref: 'gastoComun'
+    },
 
+  estados:{
+       type: Schema.ObjectId,
+       ref: 'estados'
+    }
 });
 
 module.exports = mongoose.model('Vecino', vecinoSchema);

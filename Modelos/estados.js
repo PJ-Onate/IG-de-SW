@@ -3,7 +3,11 @@ const Schema = mongoose.Schema;
 const EstadoSchema = new Schema({
     descripcion:{
         type: String,
-        required: true
+        unique: true
+    },
+    numEstado:{
+        type: Number,
+        unique: true
     }
 });
 

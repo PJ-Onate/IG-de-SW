@@ -6,18 +6,23 @@ require ('dotenv').config();
 const app = express();
 const estadoRutas = require('./Rutas/estadosRutas');
 const vecinoRutas = require('./Rutas/vecinoRutas');
+const casaRutas = require('./Rutas/casaRutas');
+const gastoComunRutas = require('./Rutas/gastoComunRutas');
+const condominioRutas = require('./Rutas/condominioRutas');
 
 app.use(cors())
 app.use(express.json());
 app.options('*', cors());
 app.use('/api',estadoRutas);
 app.use('/api',vecinoRutas);
-
+app.use('/api',casaRutas);
+app.use('/api',gastoComunRutas);
+app.use('/api',condominioRutas);
 
 app.listen(process.env.PORT, () => {
     console.log('El servidor esta corriendo en el puerto -> ',process.env.PORT);
     });
-
+    
     mongoose.set('useFindAndModify', false);
     mongoose.set('useNewUrlParser', true);
     mongoose.set('useCreateIndex', true);
