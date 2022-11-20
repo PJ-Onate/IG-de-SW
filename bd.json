@@ -1,0 +1,31 @@
+{
+    "propiedad":{
+        "costo":{
+            "type": "int",
+            "required": "true"
+        },
+        "ubicacion":{
+            "type": "string",
+            "required": "true"            
+        },
+        "tamanio":{
+            "type": "float",
+            "required": "true"
+        },
+        "tipo":"string",
+        "propietario":{
+            "type": "Schema.ObjectID",
+            "ref": "propietario"
+        }
+    },
+    "propietario":{
+        "nombre":{
+            "type": "int",
+            "required": "true"
+        },
+        "rut":{
+            "type": "string",
+            "required": "true"            
+        }
+    }    
+}

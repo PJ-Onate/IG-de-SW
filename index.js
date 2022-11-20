@@ -23,6 +23,7 @@ app.listen(process.env.PORT, () => {
     mongoose.set('useCreateIndex', true);
     mongoose.set('useUnifiedTopology', true);
 
+    //Linea 27: Conectarse a la BD creada por Daniel
     mongoose.connect('mongodb://Daniel:48402369@ac-azfkacu-shard-00-00.eutrwpu.mongodb.net:27017,ac-azfkacu-shard-00-01.eutrwpu.mongodb.net:27017,ac-azfkacu-shard-00-02.eutrwpu.mongodb.net:27017/?ssl=true&replicaSet=atlas-uavt7v-shard-0&authSource=admin&retryWrites=true&w=majority',
                     (err) => {
                         if(err){
