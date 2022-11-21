@@ -1,20 +1,21 @@
-const estadoModelo = require('../Modelos/estados');
-const crearEstado = (req, res) => {
-    const {descripcion} = req.body;
-    const nuevoEstado = new estadoModelo({
-        descripcion
+const Propiedad = require('../Modelos/propiedad');
+const agregarPropiedad = (req) => {
+    const {costo, ubicacion} = req.body;
+    const nuevaPropiedad = new Propiedad({
+        costo,
+        ubicacion,
     });
 
-nuevoEstado.save((err, estadoModelo) => {
+    nuevaPropiedad.save((err, propiedadModelo) => {
     if(err){
         return res.status(400).send({
-            message: "ERROR: no se puede crear estado"})
+            message: "ERROR: no se puede crear propiedad"})
     }
-    return res.status(201).send(estadoModelo)
+    return res.status(201).send(propiedadModelo)
 });
 }
 
-const getEstado = (req, res) => {
+/*const getEstado = (req, res) => {
     estadoModelo.find({}, (err, modelos) => {
         if(err){
             return res.status(400).send({message: "ERROR: no se pudieron obtener los estados"})
@@ -34,10 +35,10 @@ const updateEstado = (req, res) => {
         }
         return res.status(200).send(estados)
     })
-}
+}*/
 
 module.exports={
-    crearEstado,
-    getEstado,
-    updateEstado
+    agregarPropiedad
+    //getEstado,
+    //updateEstado
 }

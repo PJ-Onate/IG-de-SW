@@ -4,14 +4,14 @@ const cors = require ('cors');
 require ('dotenv').config();
 
 const app = express();
-const estadoRutas = require('./Rutas/estadosRutas');
-const vecinoRutas = require('./Rutas/vecinoRutas');
+const propiedadRutas = require('./Rutas/propiedadRutas');
+//const vecinoRutas = require('./Rutas/vecinoRutas');
 
 app.use(cors())
 app.use(express.json());
 app.options('*', cors());
-app.use('/api',estadoRutas);
-app.use('/api',vecinoRutas);
+app.use('/api',propiedadRutas);
+//app.use('/api',vecinoRutas);
 
 
 app.listen(process.env.PORT, () => {
@@ -24,7 +24,7 @@ app.listen(process.env.PORT, () => {
     mongoose.set('useUnifiedTopology', true);
 
     //Linea 27: Conectarse a la BD creada por Daniel
-    mongoose.connect('mongodb://Daniel:48402369@ac-azfkacu-shard-00-00.eutrwpu.mongodb.net:27017,ac-azfkacu-shard-00-01.eutrwpu.mongodb.net:27017,ac-azfkacu-shard-00-02.eutrwpu.mongodb.net:27017/?ssl=true&replicaSet=atlas-uavt7v-shard-0&authSource=admin&retryWrites=true&w=majority',
+    mongoose.connect('mongodb://PJOnate:aMZHDWVHzbJUgcv7@ac-whc0mnj-shard-00-00.7lqyqbk.mongodb.net:27017,ac-whc0mnj-shard-00-01.7lqyqbk.mongodb.net:27017,ac-whc0mnj-shard-00-02.7lqyqbk.mongodb.net:27017/?ssl=true&replicaSet=atlas-yqg0xh-shard-0&authSource=admin&retryWrites=true&w=majority',
                     (err) => {
                         if(err){
                             return console.log('Error al conectar la base de datos -> ', err)

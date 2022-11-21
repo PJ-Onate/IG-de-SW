@@ -17,10 +17,10 @@ const vecinoSchema = new Schema({
         type: Number,
         required: true
     },
-   // estado:{
-       //type: Schema.ObjectId,
-      // ref: 'estado'
-    //}
+    estado:{
+       type: Schema.ObjectId,
+       ref: 'estado'
+    }
    
 
 });
