@@ -1,4 +1,5 @@
 const condominio = require('../Modelos/condominio');
+
 const crearCondominio = (req, res) => {
     const {nombreCondominio, direccionCondominio, ciudadCondominio, casa} = req.body;
     const nuevoCondominio= new Condominio({
@@ -17,11 +18,11 @@ const crearCondominio = (req, res) => {
 
 
 const getCondominio = (req, res) => {
-    Casa.find({}, (err, condominios) => {
+    Casa.find({}, (err, condominio) => {
         if(err){
             return res.status(400).send({message: "ERROR: Condominios no encontrados"})
         }
-        return res.status(200).send(condominios)
+        return res.status(200).send(condominio)
     })
 }
 

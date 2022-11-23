@@ -5,10 +5,10 @@ const casaSchema = new Schema({
         type: Number,
         unique: true
     },
-     vecino:{
-         type: Schema.ObjectId,
-         ref: 'vecino'
-  }
+    vecino:{
+        type: Schema.ObjectId,
+        ref: 'vecino'
+    }
 });
 
 module.exports=mongoose.model('casa', casaSchema);

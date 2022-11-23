@@ -41,7 +41,7 @@ const updateGastoComun = (req, res) => {
 
 const getGastoEspecifico = (req, res) =>{
     const {nombreGastoComun} = req.params; //Hacerlo por el nombre del gasto comun
-    gastoComun.findOne({nombreGastoComun : nombreGastoComun}, (err, gastoComunes) =>{
+    gastoComun.findOne({nombreGastoComun: nombreGastoComun}, (err, gastoComunes) =>{
         if(err){
             return res.status(400).send({messsage: "ERROR: al obtener el gasto comun"})
         }

@@ -2,6 +2,7 @@ const express = require ('express');
 const mongoose = require ('mongoose');
 const cors = require ('cors');
 require ('dotenv').config();
+const Rol = require("./Modelos/roles");
 
 const app = express();
 const estadoRutas = require('./Rutas/estadosRutas');
@@ -18,6 +19,25 @@ app.use('/api',vecinoRutas);
 app.use('/api',casaRutas);
 app.use('/api',gastoComunRutas);
 app.use('/api',condominioRutas);
+
+app.get('/', (req, res) => {
+    res.json('bienvenidos')
+});
+
+
+
+const createRoles = async() => {
+    const count = await Rol.estimatedDocumentCount();
+
+    if (count > 0) return;
+
+    const values = await Promise.all([
+        new Rol ({name: "user"}).save(),
+        new Rol ({name: "admin"}).save(),
+    ]);
+    console.log(values);
+}
+createRoles();
 
 app.listen(process.env.PORT, () => {
     console.log('El servidor esta corriendo en el puerto -> ',process.env.PORT);

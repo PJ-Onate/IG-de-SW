@@ -13,10 +13,10 @@ const condominioSchema = new Schema({
         type: String,
         require: true
     },
-     casa:{
-         type: Schema.ObjectId,
-         ref: 'casa'
-     }
+    casa:{
+        type: Schema.ObjectId,
+        ref: 'casa'
+    }
 });
 
 module.exports=mongoose.model('condominio', condominioSchema);

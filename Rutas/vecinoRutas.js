@@ -1,4 +1,3 @@
-
 const express = require('express');
 const api = express.Router();
 const vecinoControlador = require('../Controladores/vecinoControlador');

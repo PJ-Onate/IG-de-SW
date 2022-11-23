@@ -22,16 +22,22 @@ const vecinoSchema = new Schema({
     email: {
         type: String,
         unique: true
+    }
+
+    /*roles: {
+        type: Schema.ObjectId,
+        ref: 'Roles'        
     },
+    
     gastoComunes:{
         type: Schema.ObjectId,
         ref: 'gastoComun'
     },
 
-  estados:{
-       type: Schema.ObjectId,
-       ref: 'estados'
-    }
+    estados:{
+        type: Schema.ObjectId,
+        ref: 'estados'
+    }*/
 });
 
 module.exports = mongoose.model('Vecino', vecinoSchema);

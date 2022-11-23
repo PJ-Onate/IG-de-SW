@@ -1,14 +1,14 @@
 const Vecino = require('../Modelos/vecino');
 const crearVecino = (req, res) => {
-    const {nombre, apellido, rut, telefono, email, gastoComunes, estados} = req.body;
+    const {nombre, apellido, rut, telefono, email} = req.body;
     const nuevoVecino= new Vecino({
         nombre,
         apellido,
         rut,
         telefono,
-        email,
-        gastoComunes,
-        estados
+        email
+        //gastoComunes,
+        //estados
     });
     nuevoVecino.save((err, Vecino) => {
         if(err){
