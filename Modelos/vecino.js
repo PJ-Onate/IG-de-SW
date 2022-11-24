@@ -23,11 +23,6 @@ const vecinoSchema = new Schema({
         type: String,
         unique: true
     },
-    gastoComunes:{
-        type: Schema.ObjectId,
-        ref: 'gastoComun'
-    },
-
   estados:{
        type: Schema.ObjectId,
        ref: 'estados'

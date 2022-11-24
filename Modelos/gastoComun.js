@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const vecino = require('./vecino');
 const Schema = mongoose.Schema;
 const gastoComunSchema = new Schema({
     nombreGastoComun:{
@@ -8,6 +9,10 @@ const gastoComunSchema = new Schema({
     montoGastoComun:{
         type: Number,
         require: true
+    },
+    vecino:{
+        type: Schema.ObjectId,
+        ref: 'vecino'
     }
 });
 

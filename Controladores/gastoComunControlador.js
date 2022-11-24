@@ -1,10 +1,11 @@
 const gastoComun = require('../Modelos/gastoComun');
 
 const crearGastoComun = (req, res) => {
-    const {nombreGastoComun, montoGastoComun} = req.body;
+    const {nombreGastoComun, montoGastoComun, vecino} = req.body;
     const nuevoGastoComun = new gastoComun({
         nombreGastoComun,
-        montoGastoComun
+        montoGastoComun,
+        vecino
     });
  
 nuevoGastoComun.save((err, gastoComun) => {
