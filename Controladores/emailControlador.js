@@ -1,90 +1,75 @@
-const estadoModelo = require('../Modelos/vecino');
-
-const getVecinos = (req, res) => {
-    Vecino.find({}, (err, vecinos) => {
-        if(err){
-            return res.status(400).send({message: "ERROR: no se pudieron obtener el Email del vecino"})
-        }
-        return res.status(200).send(vecinos)
-    })
-}
-
+const express = require("express");
 const nodemailer = require("nodemailer");
+const cron = require("node-cron");
+//const model = require("../Modelos/vecino");
 
-async function main() {
-let mensajePrueba = await nodemailer.createTestAccount();
+const api = express();
 
-let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-    user: "proyectopagovecinos@gmail.com",
-    pass: "qorizrzfglpckhfr",
-    },
-});
+/*exports.getData = (req, res) => {
+    model.find({email}, (err, docs) => {
+        res.send({
+            docs
+        })
+    })
 
-/*let info = await transporter.sendMail({
-    from: '"Notificacion de pagos" <proyectopagovecinos@gmail.com>',
-    to: "user.usename",
-    subject: "Hola, tu pago esta al dia",
-    text: "Hola, este correo es para confirmar su que su pago ha sido exitoso",
-});
-
-console.log("Message sent: %s", info.messageId);
-
-console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-}
-
-main().catch(console.error);
-
-module.exports={
-    getVecinos
 }*/
 
-let info2 = await transporter.sendMail({
-    from: '"Notificacion de pagos" <proyectopagovecinos@gmail.com>',
-    to: "benjamin.barriga.r@gmail.com",
-    subject: "Hola, tu pago esta pendiente",
-    text: "Hola, este correo es para avisar que su pago esta pendiente, por favor realize el pago de servicios",
+const email =  (req, res) => {
+
+    var transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        auth: {
+            user: 'proyectopagovecinos@gmail.com',
+            pass: 'qorizrzfglpckhfr'
+        }
 });
 
-console.log("Message sent: %s", info.messageId);
+var opcionesEmail = {
+    from: '"Mensaje pa probar"', // sender address
+    to: "benjamin.barriga.r@gmail.com", // list of receivers
+    subject: "Mensaje de prueba aaaaaaaa", // Subject line
+    text: "mensaje pa probar 2, si funciona me corto un coco", // plain text body
+};
 
-console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-
-
-main().catch(console.error);
-
-module.exports={
-    getVecinos
-}
-
-let info3 = await transporter.sendMail({
-    from: '"Notificacion de pagos" <proyectopagovecinos@gmail.com>',
-    to: "user.usename",
-    subject: "Hola, tu pago esta vencido",
-    text: "Hola, este correo es para avisar que su pago se encuentra vencido, por favor realize su pago de servicios",
+transporter.sendMail(opcionesEmail, (error, info) => {
+    if (error) {
+        res.status(500).send(error.message);
+    }else {
+        console.log("Email enviado");
+        res.status(200).jsonp(req.body);
+    }
 });
+};
 
-console.log("Message sent: %s", info.messageId);
+cron.schedule("0 8 27 * *", () => {
 
-console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    const http = require("http");
 
+    const options = {
+    "method": "POST",
+    "hostname": "localhost",
+    "port": "3001",
+    "path": "/api/sent-email",
+    "headers": {
+        "Content-Length": "0"
+    }
+    };
 
-main().catch(console.error);
+    const req = http.request(options, function (res) {
+    const chunks = [];
 
-module.exports={
-    getVecinos
-}
+    res.on("data", function (chunk) {
+        chunks.push(chunk);
+    });
 
-/*Obtiene los estado y email de cada uno de los vecinos
+    res.on("end", function () {
+        const body = Buffer.concat(chunks);
+        console.log(body.toString());
+    });
+    });
 
-Si el estado de el vecino es Pagado No envia nada
+    req.end();
 
-Si el estado de el vecino cambia a pendiente == enviar correo de pendiente
-
-Si el estado no cambia a pagado nuevamente al dia siguiente == enviar correo de pago vencido
-
-*/
-}
+});
+module.exports={email}

@@ -9,6 +9,7 @@ const vecinoRutas = require('./Rutas/vecinoRutas');
 const casaRutas = require('./Rutas/casaRutas');
 const gastoComunRutas = require('./Rutas/gastoComunRutas');
 const condominioRutas = require('./Rutas/condominioRutas');
+const emailRutas = require("./Rutas/emailRutas");
 
 app.use(cors())
 app.use(express.json());
@@ -18,6 +19,7 @@ app.use('/api',vecinoRutas);
 app.use('/api',casaRutas);
 app.use('/api',gastoComunRutas);
 app.use('/api',condominioRutas);
+app.use("/api",emailRutas);
 
 app.listen(process.env.PORT, () => {
     console.log('El servidor esta corriendo en el puerto -> ',process.env.PORT);
