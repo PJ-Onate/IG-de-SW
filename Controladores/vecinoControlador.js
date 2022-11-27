@@ -1,14 +1,13 @@
 const Vecino = require('../Modelos/vecino');
 const crearVecino = (req, res) => {
-    const {nombre, apellido, rut, telefono, email} = req.body;
+    const {nombre, apellido, rut, email, estado, deudaAcumulada} = req.body;
     const nuevoVecino= new Vecino({
         nombre,
         apellido,
         rut,
-        telefono,
-        email
-        //gastoComunes,
-        //estados
+        email,
+        estado,
+        deudaAcumulada
     });
     nuevoVecino.save((err, Vecino) => {
         if(err){
@@ -19,8 +18,8 @@ const crearVecino = (req, res) => {
 }
 
 const updateVecino = (req, res) => {
-    const {rut} = req.params;  //BUSQUEDA POR EL RUT
-    Vecino.findOneAndUpdate({rut : rut}, req.body, (err, vecinos) => {
+    const {id} = req.params;  //BUSQUEDA POR EL RUT
+    Vecino.findByIdAndUpdate(id, req.body, (err, vecinos) => {
         if(err){
             return res.status(400).send({message: "Error al obtener al vecino"})
         }
@@ -41,8 +40,8 @@ const getVecinos = (req, res) => {
 }
 
 const deleteVecino = (req, res) => {
-    const {rut} = req.params;
-    Vecino.findOneAndDelete({rut: rut}, (err, vecinos) => {
+    const {id} = req.params;
+    Vecino.findOneAndDelete(id, (err, vecinos) => {
         if(err){
             return res.status(400).send({message: "Error al obtener al vecino"})
         }
@@ -54,8 +53,8 @@ const deleteVecino = (req, res) => {
 }
 
 const getVecinoEspecifico = (req, res) =>{
-    const {rut} = req.params;
-    Vecino.findOne({rut : rut}, (err, vecinos) =>{
+    const {id} = req.params;
+    Vecino.findById(id, (err, vecinos) =>{
         if(err){
             return res.status(400).send({messsage: "ERROR al obtener al vecino"})
         }

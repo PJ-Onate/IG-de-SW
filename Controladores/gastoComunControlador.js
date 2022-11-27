@@ -1,62 +1,74 @@
 const gastoComun = require('../Modelos/gastoComun');
 
 const crearGastoComun = (req, res) => {
-    const {nombreGastoComun, montoGastoComun} = req.body;
+    const {vecino, boleta, montoGastoComun} = req.body;
     const nuevoGastoComun = new gastoComun({
-        nombreGastoComun,
+        vecino,
+        boleta,
         montoGastoComun
     });
  
-nuevoGastoComun.save((err, gastoComun) => {
+nuevoGastoComun.save((err, gastos) => {
     if(err){
         return res.status(400).send({
-            message: "ERROR: no se puede crear gasto comun o ya está registrado"})
+            message: "ERROR: no se puede crear GC o ya está registrado"})
     }
-    return res.status(201).send(gastoComun)
+    return res.status(201).send(gastos)
 });
 }
 
-
-const getGastoComun = (req, res) => {
-    gastoComun.find({}, (err, gastoComunes) => {
-        if(err){
-            return res.status(400).send({message: "ERROR: no se pudieron obtener los gastos comunes"})
-        }
-        return res.status(200).send(gastoComunes)
-    })
-}
-
 const updateGastoComun = (req, res) => {
-    const {nombreGastoComun} = req.params; //buscar por nombre
-    gastoComun.findOneAndUpdate({nombreGastoComun : nombreGastoComun}, req.body, (err, gastoComunes) => {
+    const {id} = req.params 
+    gastoComun.findByIdAndUpdate(id,req.body, (err, gastos) => {
         if(err){
-            return res.status(400).send({message: "Error al obtener el gasto comun"})
+            return res.status(400).send({message: "Error al obtener el gasto"})
         }
-        if(!gastoComunes){
-            return res.status(404).send({message: "Gasto comun no encontrado"})
+        if(!casas){
+            return res.status(404).send({message: "Error: gasto no encontrado"})
         }
-        return res.status(200).send(gastoComunes)
+        return res.status(201).send(gastos)
     })
 }
 
-const getGastoEspecifico = (req, res) =>{
-    const {nombreGastoComun} = req.params; //Hacerlo por el nombre del gasto comun
-    gastoComun.findOne({nombreGastoComun: nombreGastoComun}, (err, gastoComunes) =>{
+const getGastosComunes = (req, res) => {
+    gastoComun.find({}, (err, gastos) => {
         if(err){
-            return res.status(400).send({messsage: "ERROR: al obtener el gasto comun"})
+            return res.status(400).send({message: "ERROR: Gastos no encontradas"})
         }
-        if(!gastoComunes){
-            return res.status(404).send({message: "ERROR: gasto comun no encontrado"})
-        }
-        return res.status(200).send(gastoComunes)
+        return res.status(200).send(gastos)
     })
 }
 
+const getGastoComunEspecifico = (req, res) =>{
+    const {id} = req.params; 
+    gastoComun.findById(id, (err, gastos) =>{
+        if(err){
+            return res.status(400).send({messsage: "ERROR: al obtener el gasto"})
+        }
+        if(!gastos){
+            return res.status(404).send({message: "ERROR: gasto no encontrado"})
+        }
+        return res.status(200).send(gasto)
+    })
+}
 
+const deleteGastoComun = (req, res) => {
+    const {id} = req.params;
+    Casa.findByIdAndDelete(id, (err, gastos) => {
+        if(err){
+            return res.status(400).send({message: "Error al borrar el gasto"})
+        }
+        if(!gastos){
+            return res.status(404).send({message: "Gasto no encontrado"})
+        }
+        return res.status(200).send(gastos)
+    })
+}
 
 module.exports={
     crearGastoComun,
-    getGastoComun,
     updateGastoComun,
-    getGastoEspecifico
+    getGastosComunes,
+    getGastoComunEspecifico,
+    deleteGastoComun
 }

@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const gastoComunSchema = new Schema({
-    nombreGastoComun:{
-        type: String,
-        unique: true
+    vecino:{
+        type: Object.ProductId,
+        reference: 'vecino'
+    },
+    boleta:{
+        type: Object.ProductId,
+        reference: 'boleta'
     },
     montoGastoComun:{
         type: Number,

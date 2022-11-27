@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const gastosTotalesSchema = new Schema({
+const boletaSchema = new Schema({
     tipoGastoTotal:{
         type: String,
         unique: true
@@ -9,14 +9,10 @@ const gastosTotalesSchema = new Schema({
         type: Number,
         require: true
     },
-    //periodoPago:{
-    //    type: String,
-    //    require: true
-    //},
-    fechaGastoTotal:{
-        type: Date,
+    periodoPago:{
+        type: String,
         require: true
     }
 });
 
-module.exports=mongoose.model('gastosTotales', gastosTotalesSchema);
+module.exports=mongoose.model('boleta', boletaSchema);
