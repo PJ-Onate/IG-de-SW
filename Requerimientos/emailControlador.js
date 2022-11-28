@@ -29,7 +29,7 @@ var opcionesEmail = {
     from: '"Mensaje pa probar"', // sender address
     to: "benjamin.barriga.r@gmail.com", // list of receivers
     subject: "Mensaje de prueba aaaaaaaa", // Subject line
-    text: "mensaje pa probar 2, si funciona me corto un coco", // plain text body
+    text: "mensaje pa probar 2", // plain text body
 };
 
 transporter.sendMail(opcionesEmail, (error, info) => {

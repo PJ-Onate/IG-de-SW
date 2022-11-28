@@ -1,13 +1,16 @@
+const vecino = require('../Modelos/vecino');
 const Vecino = require('../Modelos/vecino');
+const { deuda } = require('./gastoComunControlador');
 const crearVecino = (req, res) => {
-    const {nombre, apellido, rut, telefono, email, estados} = req.body;
+    const {nombre, apellido, rut, telefono, email, estados, deuda} = req.body;
     const nuevoVecino= new Vecino({
         nombre,
         apellido,
         rut,
         telefono,
         email,
-        estados
+        estados,
+        deuda
     });
     nuevoVecino.save((err, Vecino) => {
         if(err){
@@ -49,7 +52,7 @@ const deleteVecino = (req, res) => {
             return res.status(404).send({message: "Vecino no encontrado"})
         }
         return res.status(200).send(vecinos)
-    })
+    })
 }
 
 const getVecinoEspecifico = (req, res) =>{
@@ -65,10 +68,21 @@ const getVecinoEspecifico = (req, res) =>{
     })
 }
 
+function buscarVecino(String){
+    Vecino.findOne({rut: String}).populate('vecino').exec(function(err,vecino){
+        if(err){
+            console.log("Error");
+        }
+        return vecino.deuda;
+    })
+}
+
+
 module.exports={
     crearVecino,
     updateVecino,
     getVecinos,
     deleteVecino,
-    getVecinoEspecifico
+    getVecinoEspecifico,
+    buscarVecino,
 }

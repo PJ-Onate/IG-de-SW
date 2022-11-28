@@ -1,5 +1,5 @@
 const gastoComun = require('../Modelos/gastoComun');
-
+const vecino = require('../Modelos/vecino');
 const crearGastoComun = (req, res) => {
     const {nombreGastoComun, montoGastoComun, vecino} = req.body;
     const nuevoGastoComun = new gastoComun({
@@ -7,7 +7,7 @@ const crearGastoComun = (req, res) => {
         montoGastoComun,
         vecino
     });
- 
+    
 nuevoGastoComun.save((err, gastoComun) => {
     if(err){
         return res.status(400).send({
@@ -16,7 +16,6 @@ nuevoGastoComun.save((err, gastoComun) => {
     return res.status(201).send(gastoComun)
 });
 }
-
 
 const getGastoComun = (req, res) => {
     gastoComun.find({}, (err, gastoComunes) => {
@@ -53,11 +52,33 @@ const getGastoEspecifico = (req, res) =>{
     })
 }
 
+function pagoDeuda(String, Number){
+    gastoComun.findOne({nombreGastoComun : String}, (err, gastoComunes) =>{
+        if(err){
+            return alert("Error");
+        }
+        if(!gastoComunes){
+            return alert ("Error");
+        }
+        vecino.deuda = (vecino.deuda - Number);
+        return alert("Pago exitoso");
+    })
+}
 
+function buscaGasto(String){ //Por id
+    gastoComun.findOne({nombreGastoComun: String}).populate('vecino').exec(function(err, gastoComun){
+        if(err){
+            console.log("Error");
+        }
+        return gastoComun.montoGastoComun;
+    })
+}
 
 module.exports={
     crearGastoComun,
     getGastoComun,
     updateGastoComun,
-    getGastoEspecifico
+    getGastoEspecifico,
+    pagoDeuda,
+    buscaGasto
 }

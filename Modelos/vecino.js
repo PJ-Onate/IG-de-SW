@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-
-
 const Schema = mongoose.Schema;
 const vecinoSchema = new Schema({
     nombre:{
@@ -23,9 +21,13 @@ const vecinoSchema = new Schema({
         type: String,
         unique: true
     },
-  estados:{
-       type: Schema.ObjectId,
-       ref: 'estados'
+    estados:{
+        type: Schema.ObjectId,
+        ref: 'estados'
+    },
+    deuda:{
+        type: Number,
+        default : 0
     }
 });
 

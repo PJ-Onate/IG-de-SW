@@ -9,7 +9,8 @@ const vecinoRutas = require('./Rutas/vecinoRutas');
 const casaRutas = require('./Rutas/casaRutas');
 const gastoComunRutas = require('./Rutas/gastoComunRutas');
 const condominioRutas = require('./Rutas/condominioRutas');
-const emailRutas = require("./Rutas/emailRutas");
+const requerimientosRutas = require('./Rutas/requerimientosRutas');
+
 
 app.use(cors())
 app.use(express.json());
@@ -19,12 +20,14 @@ app.use('/api',vecinoRutas);
 app.use('/api',casaRutas);
 app.use('/api',gastoComunRutas);
 app.use('/api',condominioRutas);
-app.use("/api",emailRutas);
+app.use('/api',requerimientosRutas);
+
+
 
 app.listen(process.env.PORT, () => {
     console.log('El servidor esta corriendo en el puerto -> ',process.env.PORT);
     });
-    
+
     mongoose.set('useFindAndModify', false);
     mongoose.set('useNewUrlParser', true);
     mongoose.set('useCreateIndex', true);
@@ -37,5 +40,3 @@ app.listen(process.env.PORT, () => {
                         }
                         return console.log('Conectado a la base de datos')
                     });
-
-
