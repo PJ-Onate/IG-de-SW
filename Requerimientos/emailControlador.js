@@ -1,17 +1,17 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cron = require("node-cron");
-//const model = require("../Modelos/vecino");
+//const vecino = require("../Modelos/vecino");
 
 const api = express();
 
-/*exports.getData = (req, res) => {
-    model.find({email}, (err, docs) => {
-        res.send({
-            docs
-        })
+/*const emailRecibidos = (req, res) => {
+    vecino.find({}).populate('vecino').exec(function (err, vecino){
+        if(err){
+            console.log("Error");
+        }
+        return vecino.email;
     })
-
 }*/
 
 const email =  (req, res) => {
@@ -26,11 +26,14 @@ const email =  (req, res) => {
 });
 
 var opcionesEmail = {
-    from: '"Mensaje pa probar"', // sender address
-    to: "benjamin.barriga.r@gmail.com", // list of receivers
-    subject: "Mensaje de prueba aaaaaaaa", // Subject line
-    text: "mensaje pa probar 2", // plain text body
+    from: '"Mensaje para probar"',
+    to: "benjamin.barriga.r@gmail.com",// sender address
+    //to: vecino.email, // list of receivers
+    subject: "Mensaje de prueba", // Subject line
+    text: "Mensaje para probar 2", // plain text body
 };
+
+
 
 transporter.sendMail(opcionesEmail, (error, info) => {
     if (error) {
@@ -42,7 +45,7 @@ transporter.sendMail(opcionesEmail, (error, info) => {
 });
 };
 
-cron.schedule("0 8 27 * *", () => {
+cron.schedule("* * * * *", () => {
 
     const http = require("http");
 
