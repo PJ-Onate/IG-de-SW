@@ -25,7 +25,7 @@ const crearGastoComun = (req, res) => {
     Casa.Find();{
         console.log(Casa.monto)
         casasTotal = 0
-        for(var int in Casa){
+        for(int in Casa){
             casasTotal = casasTotal + int.precio
         }    
     }
@@ -54,3 +54,8 @@ const crearGastoComun = (req, res) => {
         });
     }
 }
+
+module.exports={
+    crearBoleta,
+    crearGastoComun
+ }
