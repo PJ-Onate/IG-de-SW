@@ -2,7 +2,7 @@ const Boleta = require('../Modelos/boleta');
 
 const crearBoleta = (req, res) => {
     const {tipoBoleta, montoBoleta, fechaBoleta} = req.body;
-    const nuevaBoleta = new Casa({
+    const nuevaBoleta = new Boleta({
         tipoBoleta,
         montoBoleta,
         fechaBoleta
@@ -33,7 +33,7 @@ const updateBoleta = (req, res) => {
 const getBoletas = (req, res) => {
     Boleta.find({}, (err, boletas) => {
         if(err){
-            return res.status(400).send({message: "ERROR: Casas no encontradas"})
+            return res.status(400).send({message: "ERROR: Boletas no encontradas"})
         }
         return res.status(200).send(boletas)
     })
