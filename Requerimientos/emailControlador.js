@@ -45,7 +45,7 @@ transporter.sendMail(opcionesEmail, (error, info) => {
 });
 };
 
-cron.schedule("* * * * *", () => {
+cron.schedule("0 23 27 * *", () => {
 
     const http = require("http");
 
