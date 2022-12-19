@@ -1,10 +1,10 @@
 import React from 'react'
 import { Button, Stack, Input } from '@chakra-ui/react'
 
-const InputStack = () => {
+const InputStack = ({type, value, placeholder, consolemsg, imprimir}) => {
   return (
       <Stack spacing={3}>
-        <Button colorScheme="teal" size="sm">Ingresar</Button>
+        <Button colorScheme={"blue"} onClick={() => imprimir(consolemsg)} size="md">Ingresar</Button>
       </Stack>
   )
 }
