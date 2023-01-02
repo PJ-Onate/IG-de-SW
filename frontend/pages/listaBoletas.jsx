@@ -3,8 +3,11 @@ import InputStack from '../components/InputStack'
 import {Button, Container, Heading, HStack, Input, Stack, Table, Thead, Tr, Td, Th, Tbody } from '@chakra-ui/react'
 import axios from 'axios'
 import { getBoletas }  from '../data/boleta'
+import { useRouter } from 'next/router'
 
 const listaBoletas = () => {
+
+  const router = useRouter()
 
   const [boletas, setBoleta] = useState([{
     id: '',
@@ -36,6 +39,7 @@ const listaBoletas = () => {
     <>
     <Container maxW="container.x1">
       <Heading as="H1" textAlign={"center"} size="2xl" color={"blue"}>Listado de boletas</Heading>
+      <Button colorScheme="blue" mt="10" mb="10" onClick={() => router.push('/menuPrincipal')}>Volver</Button>
       <Stack spacing = {4} mt = "10">
         <Table variant="simple">
             <Thead>

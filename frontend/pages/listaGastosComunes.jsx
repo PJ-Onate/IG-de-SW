@@ -3,8 +3,11 @@ import InputStack from '../components/InputStack'
 import {Button, Container, Heading, HStack, Input, Stack, Table, Thead, Tr, Td, Th, Tbody } from '@chakra-ui/react'
 import axios from 'axios'
 import { getGastosComunes }  from '../data/boleta'
+import { useRouter } from 'next/router'
 
 const listaGastosComunes = () => {
+
+  const router = useRouter()
 
   const [gastos, setGastos] = useState([{
     id: '',
@@ -36,6 +39,7 @@ const listaGastosComunes = () => {
     <>
     <Container maxW="container.x1">
       <Heading as="H1" textAlign={"center"} size="2xl" color={"blue"}>Listado de gastos de cada vecino</Heading>
+      <Button colorScheme="blue" mt="10" mb="10" onClick={() => router.push('/menuPrincipal')}>Volver</Button>
       <Stack spacing = {4} mt = "10">
         <Table variant="simple">
             <Thead>

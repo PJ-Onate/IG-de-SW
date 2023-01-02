@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { Button, Container, Heading, HStack, Stack, Text, Input, Textarea } from '@chakra-ui/react'
+import { Button, Box, Container, Heading, HStack, Stack, Text, Input, Textarea } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { Spinner } from '@chakra-ui/react'
+import Swal from 'sweetalert2'
+
 
 const enviarEmail = () => {
 
@@ -14,17 +15,26 @@ const enviarEmail = () => {
 
     emailjs.sendForm('service_email_envio', 'template_psex14h', form.current, 'g6S4lqxg0Fe1Db9zs')
         .then((result) => {
-            console.log(result.text);
-            console.log("mensaje enviado");
+            Swal.fire({
+                position: "center",
+                icon: 'success',
+                title: 'Email Enviado Correctamente',
+                showConfirmButton: false,
+                timer: 1500
+              })
         }, (error) => {
-            console.log(error.text);
-            console.log("no se envio papu")
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: 'Ocurrio un error',
+                showConfirmButton: false,
+                timer: 1500
+            })
         });
     };
 
   return (
-    <>
-<Container maxW="container.md">
+    <Container maxW="container.sm" centerContent>
 <form ref={form} onSubmit={sendEmail}>
 <Heading as="H1" textAlign={"center"} size="2xl" color={"blue"}>Contactenos!</Heading>
 <Heading as="H2" textAlign={"center"} size="md" color={"blue"}>Formulario de contacto con administrador</Heading>
@@ -39,7 +49,6 @@ const enviarEmail = () => {
 <Button type="submit" colorScheme="blue" mt="20" mb="10" value="Send">Enviar</Button>
 </form>
 </Container>
-</>
 )}
 
 export default enviarEmail
