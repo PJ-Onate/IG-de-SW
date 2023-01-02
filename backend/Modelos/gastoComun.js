@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const gastoComunSchema = new Schema({
     nombreGastoComun:{
         type: String,
-        unique: true
+        require: true
     },
     montoGastoComun:{
         type: Number,

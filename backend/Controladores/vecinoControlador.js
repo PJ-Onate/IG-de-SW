@@ -38,6 +38,7 @@ const getVecinos = (req, res) => {
     if(err){
         return res.status(400).send({message: "Error al obtener los vecinos"})
     }
+    console.log(vecinos)
     return res.status(200).send(vecinos)
   })
 }

@@ -1,8 +1,18 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cron = require("node-cron");
+//const vecino = require("../Modelos/vecino");
 
 const api = express();
+
+/*const emailRecibidos = (req, res) => {
+    vecino.find({}).populate('vecino').exec(function (err, vecino){
+        if(err){
+            console.log("Error");
+        }
+        return vecino.email;
+    })
+}*/
 
 const email =  (req, res) => {
 

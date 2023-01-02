@@ -5,9 +5,13 @@ const casaSchema = new Schema({
         type: Number,
         unique: true
     },
-     vecino:{
-         type: Schema.ObjectId,
-         ref: 'vecino'
+    tamanio:{
+        type: Number,
+        req: true
+    },
+    vecino:{
+        type: Schema.ObjectId,
+        ref: 'vecino'
   }
 });
 

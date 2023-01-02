@@ -6,6 +6,7 @@ const ingresarBoleta = require('../Requerimientos/ingresarBoleta');
 
 
 api.post('/sent-email', emailControlador.email);
+
 api.put('/pagoDeuda', requerimientoPago.pagoDeudaTotal);
 api.get('/pagoGasto', requerimientoPago.pagarGasto);
 api.get('abonarDeuda', requerimientoPago.abonar);

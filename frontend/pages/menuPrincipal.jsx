@@ -16,7 +16,7 @@ const router = useRouter()
 
       <Button colorScheme="blue" mt="20" mb="10" onClick={()=>router.push('./Emails')}>Listado de Clientes</Button>
       <Button colorScheme="blue" mt="20" mb="10" onClick={()=>router.push('./enviarEmail')}>Enviar Email</Button>
-      <Button colorScheme="blue" mt="20" mb="10" onClick={()=>router.push('./menuPrincipal')}>Boton pal Pedro</Button>
+      <Button colorScheme="blue" mt="20" mb="10" onClick={()=>router.push('./crearBoleta')}>Crear Boleta</Button>
       <Button colorScheme="blue" mt="20" mb="10" onClick={()=>router.push('./')}>Volver atras</Button>
 
     </Container>

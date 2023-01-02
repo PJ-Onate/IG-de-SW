@@ -1,4 +1,6 @@
 const Boleta = require('../Modelos/boleta');
+const Vecino = require('../Modelos/vecino');
+const gastoComun = require('../Modelos/gastoComun');
 
 const crearBoleta = (req, res) => {
     const {tipoBoleta, montoBoleta, fechaBoleta} = req.body;
@@ -13,6 +15,8 @@ nuevaBoleta.save((err, boletas) => {
         return res.status(400).send({
             message: "ERROR: no se puede crear boleta"})
     }
+    console.log(nuevaBoleta.tipoBoleta)
+    Gasto_por_vecino(req, res, nuevaBoleta.tipoBoleta, nuevaBoleta.montoBoleta);
     return res.status(201).send(boletas)
 });
 }
@@ -35,6 +39,7 @@ const getBoletas = (req, res) => {
         if(err){
             return res.status(400).send({message: "ERROR: Boletas no encontradas"})
         }
+        //console.log(boletas)
         return res.status(200).send(boletas)
     })
 }
@@ -63,6 +68,28 @@ const deleteBoleta = (req, res) => {
         }
         return res.status(200).send(boletas)
     })
+}
+
+function Gasto_por_vecino(req, res, tipo, monto){
+    Vecino.find({}, (err, vecinos)=>{
+      //console.log(vecinos[2].rut)
+        var suma = 0
+        for (var n in vecinos){
+            suma = suma + 1
+        }
+      for (var n in vecinos){
+        //console.log(vecinos[n].rut);
+
+        const {nombreGastoComun, montoGastoComun, vecino} = req.body;
+        const nuevoGastoComun = new gastoComun({
+            nombreGastoComun: tipo,
+            montoGastoComun: monto/suma,
+            vecino: vecinos[n].id
+        })
+        console.log(nuevoGastoComun);
+        nuevoGastoComun.save();
+      }
+    })
 }
 
 module.exports={

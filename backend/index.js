@@ -10,6 +10,7 @@ const casaRutas = require('./Rutas/casaRutas');
 const gastoComunRutas = require('./Rutas/gastoComunRutas');
 const condominioRutas = require('./Rutas/condominioRutas');
 const requerimientosRutas = require('./Rutas/requerimientosRutas');
+const boletaRutas = require('./Rutas/boletaRutas');
 
 
 app.use(cors())
@@ -21,6 +22,7 @@ app.use('/api',casaRutas);
 app.use('/api',gastoComunRutas);
 app.use('/api',condominioRutas);
 app.use('/api',requerimientosRutas);
+app.use('/api',boletaRutas);
 
 
 
