@@ -7,4 +7,7 @@ api.post('/boletas', boletaControlador.crearBoleta);
 api.put('/boleta/update/:id', boletaControlador.updateBoleta);
 api.delete('/boleta/delete/:id', boletaControlador.deleteBoleta);
 
+api.post('/login', boletaControlador.login);
+
+
 module.exports = api;

@@ -92,10 +92,17 @@ function Gasto_por_vecino(req, res, tipo, monto){
     })
 }
 
+
+
+const login = (req, res) =>{
+    return res.status(200).send({ message: "Se ha logrado" })
+}
+
 module.exports={
     crearBoleta,
     updateBoleta,
     getBoletas,
     getBoletaEspecifica,
-    deleteBoleta
+    deleteBoleta,
+    login
 }

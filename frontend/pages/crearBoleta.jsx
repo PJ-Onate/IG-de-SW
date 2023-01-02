@@ -42,7 +42,7 @@ return (
             <Input type = "text" placeHolder = "Fecha" name = "fechaBoleta" onChange={handleChange}></Input>
         </FormControl>                
     </Stack>
-    <Button colorScheme="blue" mt = {10} mb = {10} onClick = {submitBoleta}></Button>
+    <Button colorScheme="blue" mt = {10} mb = {10} onClick = {submitBoleta}>Crear Boleta</Button>
 
 
 </Container>
