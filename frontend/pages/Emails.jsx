@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Button, Container, Heading, HStack, Input, Stack, Table, Thead, Tr, Td, Th, Tbody } from '@chakra-ui/react'
+import { Button, Box, Container, Heading, HStack, Input, Stack, Table, Thead, Tr, Td, Th, Tbody } from '@chakra-ui/react'
 import { getProducts } from '../data/products'
 import { useRouter } from 'next/router'
 
@@ -35,12 +35,11 @@ const listado = () => {
 
 
     return (
-        <>
-            <Container maxW="container.md">
-                <Heading as="h1" size="2xl" textAlign="center" mt="10"> Listado de Clientes </Heading>
+        <Container maxW="lx">
+                <Heading as="h1" size="2xl" color="blue" textAlign="center"> Listado de Clientes </Heading>
                 <Button colorScheme="blue" mt="10" mb="10" onClick={() => router.push('/menuPrincipal')}>Volver</Button>
                 <Stack spacing={4} mt="10">
-                    <Table variant="striped" size='md'>
+                    <Table variant="simple" size='md'>
                         <Thead>
                             <Tr>
                                 <Td>Nombre</Td>
@@ -55,8 +54,7 @@ const listado = () => {
                         </Tbody>
                     </Table>
                 </Stack>
-            </Container>
-        </>
+        </Container>
 
     )
 }
