@@ -1,14 +1,13 @@
 import { Button, Box, Grid, Container, Heading, Stack, Input, FormControl, FormLabel } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useState as state } from 'react'
 import { ingresarVecino } from '../data/products'
-import { useRouter } from 'next/router'
+import router from 'next/router'
 import Swal from 'sweetalert2'
 
 const postVecino = () => {
 
-    const router = useRouter()
 
-    const [vecino, setVecino] = useState({
+    const [vecino, setVecino] = state({
         nombre: '',
         apellido: '',
         rut: '',

@@ -1,12 +1,8 @@
-import React, {Fragment} from 'react'
-import InputStack from '../components/InputStack'
-import {Button, Container, Grid,Heading, HStack, Input, Stack, Table, Thead, Tr, Td, Th, Tbody } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
-import { Box } from "@chakra-ui/react"
+import React from 'react'
+import {Button, Container, Grid, Box, Heading, Stack, } from '@chakra-ui/react'
+import router from 'next/router'
 
 const index = () => {
-
-  const router = useRouter()
 
   return (
 

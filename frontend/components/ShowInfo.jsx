@@ -1,6 +1,5 @@
 import React from 'react'
 import { HStack, Text } from '@chakra-ui/react'
-import axios from 'axios'
 
 const ShowInfo = ({ value, color, tag }) => {
     return (

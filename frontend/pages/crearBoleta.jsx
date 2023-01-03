@@ -1,14 +1,13 @@
-import { Button, Box, Container, Grid, Heading, HStack, Stack, Input, FormControl, FormLabel } from '@chakra-ui/react'
-import { useState } from 'react'
+import { Button, Box, Container, Grid, Heading, Stack, Input, FormControl, FormLabel } from '@chakra-ui/react'
+import { useState as state } from 'react'
 import { createBoletas } from '../data/boleta'
-import { useRouter } from 'next/router'
+import  router  from 'next/router'
 import Swal from 'sweetalert2'
 
 const crearBoleta = () => {
 
-    const router = useRouter()
 
-    const [boletas, setBoleta] = useState({
+    const [boletas, setBoleta] = state({
         tipoBoleta: '',
         montoBoleta: '',
         fechaBoleta: ''
@@ -57,8 +56,6 @@ return (
         <Button colorScheme="blue" mt = {10} mb = {10} onClick = {submitBoleta}>Crear</Button>
     </Stack>
 </Box>
-            <Input type = "text" placeHolder = "Fecha" name = "fechaBoleta" onChange={handleChange}></Input>
-    <Button colorScheme="blue" mt = {10} mb = {10} onClick = {submitBoleta}>Crear Boleta</Button>
 </Container>
 </Grid>
 )}

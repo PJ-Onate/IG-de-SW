@@ -1,11 +1,8 @@
-import React, {Fragment} from 'react'
-import InputStack from '../components/InputStack'
-import {Button, Flex, Spacer, Container, Heading, HStack, Input, Stack, Table, Thead, Tr, Td, Th, Tbody, ButtonGroup, Grid } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
+import React from 'react'
+import {Button, Stack, ButtonGroup, Grid, Heading } from '@chakra-ui/react'
+import router from 'next/router'
 
 const menuPrincipal = () => {
-
-const router = useRouter()
 
   return (
     <Grid background="linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 26%, rgba(0,212,255,1) 65%, rgba(0,212,255,1) 82%)">

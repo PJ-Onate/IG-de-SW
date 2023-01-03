@@ -1,14 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef as ref} from 'react';
 import emailjs from '@emailjs/browser';
-import { Button, Flex, Grid, Box, Container, Heading, HStack, Stack, Text, Input, Textarea, Spacer } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
+import { Button, Flex, Grid, Box, Container, Heading, Input, Textarea, Spacer } from '@chakra-ui/react'
+import router from 'next/router'
 import Swal from 'sweetalert2'
 
 
 const enviarEmail = () => {
 
-    const router = useRouter();
-    const form = useRef();
+    const form = ref();
 
     const sendEmail = (e) => {
     e.preventDefault();
@@ -21,7 +20,7 @@ const enviarEmail = () => {
                 title: 'Email Enviado Correctamente',
                 showConfirmButton: false,
                 timer: 1500
-              })
+            })
         }, (error) => {
             Swal.fire({
                 position: "center",

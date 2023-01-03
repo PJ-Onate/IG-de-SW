@@ -1,13 +1,12 @@
-import { useState, useEffect } from 'react'
-import { Button, Grid, Box, Container, Heading, HStack, Input, Stack, Table, Thead, Tr, Td, Th, Tbody } from '@chakra-ui/react'
+import { useState as state , useEffect as effect } from 'react'
+import { Button, Grid, Box, Container, Heading, HStack, Stack, Table, Thead, Tr, Td, Tbody } from '@chakra-ui/react'
 import { getProducts } from '../data/products'
-import { useRouter } from 'next/router'
+import router from 'next/router'
 
 const listado = () => {
 
-    const [vecinos, setProducts] = useState([{
+    const [vecinos, setProducts] = state([{
     }])
-    const router = useRouter()
 
     const contentTable = () => {
         return vecinos.map(vecinos => {
@@ -27,7 +26,7 @@ const listado = () => {
         })
     }
 
-    useEffect(() => {
+    effect(() => {
         getProducts().then(res => {
             setProducts(res.data)
         })

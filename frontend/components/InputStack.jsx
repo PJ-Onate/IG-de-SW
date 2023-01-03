@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button, Stack, Input } from '@chakra-ui/react'
-import axios from 'axios'
+import { Button, Stack } from '@chakra-ui/react'
 
 const InputStack = ({type, value, placeholder, consolemsg, imprimir}) => {
   return (
