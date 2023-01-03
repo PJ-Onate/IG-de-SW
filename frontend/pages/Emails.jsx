@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Button, Container, Heading, HStack, Input, Stack, Table, Thead, Tr, Td, Th, Tbody } from '@chakra-ui/react'
+import { Button, Grid, Box, Container, Heading, HStack, Input, Stack, Table, Thead, Tr, Td, Th, Tbody } from '@chakra-ui/react'
 import { getProducts } from '../data/products'
 import { useRouter } from 'next/router'
 
@@ -35,11 +35,12 @@ const listado = () => {
 
 
     return (
-        <>
-            <Container maxW="container.md">
-                <Heading as="h1" size="2xl" textAlign="center" mt="10"> Listado de Clientes </Heading>
+        <Grid background="linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 26%, rgba(0,212,255,1) 65%, rgba(0,212,255,1) 82%)">
+        <Container maxW="lx">
+                <Heading as="h1" size="2xl" color="orange" textAlign="center"> Listado de Clientes </Heading>
                 <Button colorScheme="blue" mt="10" mb="10" onClick={() => router.push('/menuPrincipal')}>Volver</Button>
                 <Stack spacing={4} mt="10">
+                <Box bg="white" w='100%' p={4} borderRadius='lg' borderWidth='1px'>
                     <Table variant="striped" size='md'>
                         <Thead>
                             <Tr>
@@ -54,10 +55,11 @@ const listado = () => {
                             {contentTable()}
                         </Tbody>
                     </Table>
+                    </Box>
                 </Stack>
-            </Container>
-        </>
-
+                <Button colorScheme="blue" mt="10" mb="10" onClick={() => router.push('/ingresarVecino')}>Ingresar Vecino</Button>
+        </Container>
+        </Grid>
     )
 }
 

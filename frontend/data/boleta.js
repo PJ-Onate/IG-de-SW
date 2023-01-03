@@ -23,10 +23,9 @@ const getGastosComunes = (gastos) =>{
 }
 
 
-
 module.exports = {
     createBoletas,
     getBoletas,
     updateBoletas,
-    getGastosComunes
+    getGastosComunes,
 }

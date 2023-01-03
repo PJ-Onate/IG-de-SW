@@ -5,8 +5,13 @@ const getProducts = async () => {
     return response
 }
 
+const ingresarVecino = (vecinos) => {
+    const response = axios.post(`${process.env.SERVIDOR}/vecino`, vecinos);
+    return response
+}
 
 
 module.exports = {
     getProducts,
+    ingresarVecino
 }
