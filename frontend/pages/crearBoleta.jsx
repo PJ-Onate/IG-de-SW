@@ -52,11 +52,20 @@ return (
         </FormControl>
         <FormControl id = "fechaBoleta">
             <FormLabel>Mes y Año</FormLabel>
+<<<<<<< HEAD
             <Input type = "text" placeHolder = "DD/MM/YYYY" name = "fechaBoleta" onChange={handleChange}></Input>
         </FormControl>
         <Button colorScheme="blue" mt = {10} mb = {10} onClick = {submitBoleta}>Crear</Button>
     </Stack>
 </Box>
+=======
+            <Input type = "text" placeHolder = "Fecha" name = "fechaBoleta" onChange={handleChange}></Input>
+        </FormControl>
+    </Stack>
+    <Button colorScheme="blue" mt = {10} mb = {10} onClick = {submitBoleta}>Crear Boleta</Button>
+
+
+>>>>>>> 0cb70cdac4f4b8296bd99680fa4d8bd8fcb51ba4
 </Container>
 </Grid>
 )}

@@ -39,7 +39,11 @@ const listaGastosComunes = () => {
     <>
     <Grid background="linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 26%, rgba(0,212,255,1) 65%, rgba(0,212,255,1) 82%)">
     <Container maxW="container.x1">
+<<<<<<< HEAD
       <Heading as="H1" textAlign={"center"} size="2xl" color={"orange"}>Listado de gastos de cada vecino</Heading>
+=======
+      <Heading as="H1" textAlign={"center"} size="2xl" color={"blue"}>Listado de gastos de cada vecino</Heading>
+>>>>>>> 0cb70cdac4f4b8296bd99680fa4d8bd8fcb51ba4
       <Button colorScheme="blue" mt="10" mb="10" onClick={() => router.push('/menuPrincipal')}>Volver</Button>
       <Stack spacing = {4} mt = "10">
       <Box bg="white" mt="5" w='100%' p={4} borderRadius='lg' borderWidth='1px'>
