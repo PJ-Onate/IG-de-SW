@@ -37,7 +37,6 @@ const crearBoleta = () => {
 return (
 <Grid background="linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 26%, rgba(0,212,255,1) 65%, rgba(0,212,255,1) 82%)">
 <Container maxW="sm" mt={10}>
-
     <Heading as="H1" textAlign={"center"} size="2xl" color={"orange"}>Crear Boleta</Heading>
     <Button colorScheme="blue" mt="10" mb="5" onClick={() => router.push('/menuPrincipal')}>Volver</Button>
     <Box bg="white" mt="5" w='100%' p={4} borderRadius='lg' borderWidth='1px'>
@@ -52,20 +51,14 @@ return (
         </FormControl>
         <FormControl id = "fechaBoleta">
             <FormLabel>Mes y Año</FormLabel>
-<<<<<<< HEAD
+
             <Input type = "text" placeHolder = "DD/MM/YYYY" name = "fechaBoleta" onChange={handleChange}></Input>
         </FormControl>
         <Button colorScheme="blue" mt = {10} mb = {10} onClick = {submitBoleta}>Crear</Button>
     </Stack>
 </Box>
-=======
             <Input type = "text" placeHolder = "Fecha" name = "fechaBoleta" onChange={handleChange}></Input>
-        </FormControl>
-    </Stack>
     <Button colorScheme="blue" mt = {10} mb = {10} onClick = {submitBoleta}>Crear Boleta</Button>
-
-
->>>>>>> 0cb70cdac4f4b8296bd99680fa4d8bd8fcb51ba4
 </Container>
 </Grid>
 )}
